@@ -2,7 +2,42 @@ import React, { Component } from 'react'
 import logo from './logo.svg';
 import './App.css';
 
+console.log(process.env.REACT_APP_WEATHER_API_KEY)
+
 class App extends Component {
+  //Store the state of a component, we should make the constructor
+  constructor(){
+    super();
+    this.state = {
+      pictures: [],
+    };
+  }
+
+//componentDidMount is executed after the render（part of lifecycle）
+//response is what we are calling, the name we give whatever comes back
+//Return response object(JSON file)
+//Then we take the value we get, then call function(j)
+  componentDidMount(){
+    //Fetch JSON file using a REST API from Flickr
+    fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+process.env.REACT_APP_API_KEY+'&tags=dogs&per_page=10&page=1&format=json&nojsoncallback=1')
+    //Hide the API key for security
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(j){
+      //alert(JSON.stringify(j)); check whether j bring all the information
+      let picArray = j.photos.photo.map((pic) =>{
+        //Derive the source path of that photo, create the location of the picture
+        var srcPath = 'https://farm'+pic.farm+'.staticflickr.com/'+pic.server+'/'+pic.id+'_'+pic.secret+'.jpg';
+        //After parsing JSON and mapping here to build the path, then return the element that we build in this image
+        return(
+          <img alt="dogs" src={srcPath}></img>
+        )
+      })
+      this.setState({pictures: picArray});//Store picArray value into the state
+    }.bind(this))//Bind to the function to component
+  }
+
   render() {
     return (
       <div className="App">
@@ -11,7 +46,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header> 
         <p className="App-intro">
-          We are coding!
+          {this.state.pictures}
         </p>
       </div>
     );
