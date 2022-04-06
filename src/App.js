@@ -32,7 +32,7 @@ class App extends Component {
         var srcPath = 'https://farm'+pic.farm+'.staticflickr.com/'+pic.server+'/'+pic.id+'_'+pic.secret+'.jpg';
         //After parsing JSON and mapping here to build the path, then return the element that we build in this image
         return(
-          <img alt="dogs" src={srcPath}></img>
+          <img alt="dogs" className="pictureClass" src={srcPath}></img>
         )
       })
       this.setState({pictures: picArray});//Store picArray value into the state
