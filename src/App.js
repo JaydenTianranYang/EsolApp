@@ -10,6 +10,7 @@ class App extends Component {
     super();
     this.state = {
       pictures: [],
+      indexValue: 0
     };
   }
 
@@ -38,6 +39,12 @@ class App extends Component {
     }.bind(this))//Bind to the function to component
   }
 
+  NextHandler = () => {
+    var currentIndex =  this.state.indexValue;
+    currentIndex++;
+    this.setState({indexValue: currentIndex})
+  }
+
   render() {
     return (
       <div className="App">
@@ -46,8 +53,15 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header> 
         <p className="App-intro">
-          {this.state.pictures}
+          <div>
+            Picture #{this.state.indexValue}
+          </div>
+          {this.state.pictures[this.state.indexValue]}
         </p>
+        <div>
+          <button>Prev</button>&nbsp;
+          <button onClick = {this.NextHandler}>Next</button>
+        </div>
       </div>
     );
   }
