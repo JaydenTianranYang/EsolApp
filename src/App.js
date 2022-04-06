@@ -41,7 +41,23 @@ class App extends Component {
 
   NextHandler = () => {
     var currentIndex =  this.state.indexValue;
-    currentIndex++;
+    if(currentIndex === 9){
+      currentIndex = 0;
+    }
+    else{
+      currentIndex++;
+    }
+    this.setState({indexValue: currentIndex})
+  }
+
+  PrevHandler = () => {
+    var currentIndex =  this.state.indexValue;
+    if(currentIndex === 0){
+      currentIndex = 9;
+    }
+    else{
+      currentIndex--;
+    }
     this.setState({indexValue: currentIndex})
   }
 
@@ -59,7 +75,7 @@ class App extends Component {
           {this.state.pictures[this.state.indexValue]}
         </p>
         <div>
-          <button>Prev</button>&nbsp;
+          <button onClick={this.PrevHandler}>Prev</button>&nbsp;
           <button onClick = {this.NextHandler}>Next</button>
         </div>
       </div>
