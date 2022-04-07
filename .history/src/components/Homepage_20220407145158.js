@@ -110,13 +110,16 @@ class Homepage extends Component {
 
     render() {
         return (
+
+            <Card>
+                <Card.Body>
+                    <h2 className="text-center mb-4">Profile</h2>
+                    {error & <Alert variant="danger">{error}</Alert>}
+                    <strong>Email:</strong> {currentUser.email}
+                    <Link to="/update-profile" className="btn btn.primary w-100 mt-3">Update Profile</Link>
+                </Card.Body>
+            </Card>
             <div className="App">
-                <Card>
-                    <Card.Body>
-                        <h2 className="text-center mb-4">Profile</h2>
-                        <Link to="/login" className="btn btn.primary w-100 mt-3">Log Out</Link>
-                    </Card.Body>
-                </Card>
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
                     <h1 className="App-title">Welcome to React</h1>

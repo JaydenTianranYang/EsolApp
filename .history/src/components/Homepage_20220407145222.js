@@ -114,7 +114,9 @@ class Homepage extends Component {
                 <Card>
                     <Card.Body>
                         <h2 className="text-center mb-4">Profile</h2>
-                        <Link to="/login" className="btn btn.primary w-100 mt-3">Log Out</Link>
+                        {error & <Alert variant="danger">{error}</Alert>}
+                        <strong>Email:</strong> {currentUser.email}
+                        <Link to="/update-profile" className="btn btn.primary w-100 mt-3">Update Profile</Link>
                     </Card.Body>
                 </Card>
                 <header className="App-header">
