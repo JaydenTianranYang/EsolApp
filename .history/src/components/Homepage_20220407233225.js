@@ -111,15 +111,15 @@ class Homepage extends Component {
     render() {
         return (
             <div className="App">
-                <Card>
-                    <Card.Body>
-                        <h2 className="text-center mb-4">Welcome to Esol App!</h2>
-                        <Link to="/login">Log Out</Link>
-                    </Card.Body>
-                </Card>
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React</h1>
+                    <Card>
+                        <Card.Body>
+                            <h2 className="text-center mb-4">Welcome to Esol App!</h2>
+                            <Link to="/login">Log Out</Link>
+                        </Card.Body>
+                    </Card>
+                    {/* <img src={logo} className="App-logo" alt="logo" />
+                    <h1 className="App-title">Welcome to React</h1> */}
                 </header>
                 <p className="App-intro">
                     <div>

@@ -113,7 +113,7 @@ class Homepage extends Component {
             <div className="App">
                 <Card>
                     <Card.Body>
-                        <h2 className="text-center mb-4">Welcome to Esol App!</h2>
+                        <h2 className="text-center mb-4">Profile</h2>
                         <Link to="/login">Log Out</Link>
                     </Card.Body>
                 </Card>
