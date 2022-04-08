@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import logo from './logo.svg';
 import './App.css';
-import { Link } from "react-router-dom"
 
 class Homepage extends Component {
 
@@ -106,10 +105,6 @@ class Homepage extends Component {
                 <div>
                     <button onClick={this.PrevHandler}>Prev</button>&nbsp;
                     <button onClick={this.NextHandler}>Next</button>
-                </div>
-
-                <div className="w-100 text-center mt-2">
-                    Back to profile? <Link to="/dashboard">Back</Link>
                 </div>
             </div>
         );

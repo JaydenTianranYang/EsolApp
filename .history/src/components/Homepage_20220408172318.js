@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
+import { Card, Button, Alert } from 'react-bootstrap'
+import { useAuth } from '../contexts/AuthContext';
 import logo from './logo.svg';
 import './App.css';
-import { Link } from "react-router-dom"
+import { Link, useHistory } from 'react-router-dom'
 
 class Homepage extends Component {
 
@@ -11,7 +13,7 @@ class Homepage extends Component {
         this.state = {
             pictures: [],
             indexValue: 0,
-            textInput: 'elephant'
+            textInput: 'dog'
         };
     }
 
@@ -37,7 +39,7 @@ class Homepage extends Component {
                     var srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
                     //After parsing JSON and mapping here to build the path, then return the element that we build in this image
                     return (
-                        <img alt="elephant" className="pictureClass" src={srcPath}></img>
+                        <img alt="dogs" className="pictureClass" src={srcPath}></img>
                     )
                 })
                 this.setState({ pictures: picArray });//Store picArray value into the state
@@ -106,10 +108,6 @@ class Homepage extends Component {
                 <div>
                     <button onClick={this.PrevHandler}>Prev</button>&nbsp;
                     <button onClick={this.NextHandler}>Next</button>
-                </div>
-
-                <div className="w-100 text-center mt-2">
-                    Back to profile? <Link to="/dashboard">Back</Link>
                 </div>
             </div>
         );

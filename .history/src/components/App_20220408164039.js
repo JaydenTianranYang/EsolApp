@@ -2,7 +2,6 @@ import React from 'react'
 import Signup from './Signup'
 import Homepage from './Homepage';
 import Login from './Login';
-import Dashboard from './Dashboard';
 import PrivateRoute from './PrivateRoute';
 import { Container } from 'react-bootstrap'
 import { AuthProvider } from '../contexts/AuthContext';
@@ -17,10 +16,9 @@ function App() {
         <Router>
           <AuthProvider>
             <Switch>
-              <PrivateRoute exact path="/" component={Login} />
+              <Route exact path="/Homepage" component={Homepage} />
               <Route path = "/signup" component={Signup} />
-              <Route path = "/dashboard" component={Dashboard} />
-              <Route path = "/homepage" component={Homepage} />
+              <Route path = "/login" component={Login} />
             </Switch>
           </AuthProvider>
         </Router>

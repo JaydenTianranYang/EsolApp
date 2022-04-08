@@ -1,7 +1,50 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
+import { Card, Button, Alert } from 'react-bootstrap'
+import { useAuth } from '../contexts/AuthContext';
 import logo from './logo.svg';
 import './App.css';
-import { Link } from "react-router-dom"
+import { Link, useHistory } from 'react-router-dom'
+
+// const [error, setError] = useState("")
+// const { currentUser } = useAuth()
+// function handleLogout() {
+
+// }
+// export function Dashboard() {
+//     const [error, setError] = useState("")
+//     const { currentUser } = useAuth()
+//     function handleLogout() {
+//     }
+
+//     return (
+//         <>
+//             <Card>
+//                 <Card.Body>
+//                     <h2 className="text-center mb-4">Profile</h2>
+//                     {error & <Alert variant="danger">{error}</Alert>}
+//                     <strong>Email:</strong> {currentUser.email}
+//                     <Link to="/update-profile" className="btn btn.primary w-100 mt-3">Update Profile</Link>
+//                 </Card.Body>
+//             </Card>
+//         </>
+//     )
+
+
+// }
+
+export function handleLogout() {
+
+    const [error, setError] = useState("")
+    const { logout } = useAuth()
+    const history = useHistory()
+
+    try {
+        logout()
+        history.push('/login')
+    } catch {
+        setError('Failed to logout')
+    }
+}
 
 class Homepage extends Component {
 
@@ -11,7 +54,7 @@ class Homepage extends Component {
         this.state = {
             pictures: [],
             indexValue: 0,
-            textInput: 'elephant'
+            textInput: 'dog'
         };
     }
 
@@ -37,7 +80,7 @@ class Homepage extends Component {
                     var srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg';
                     //After parsing JSON and mapping here to build the path, then return the element that we build in this image
                     return (
-                        <img alt="elephant" className="pictureClass" src={srcPath}></img>
+                        <img alt="dogs" className="pictureClass" src={srcPath}></img>
                     )
                 })
                 this.setState({ pictures: picArray });//Store picArray value into the state
@@ -84,6 +127,12 @@ class Homepage extends Component {
     render() {
         return (
             <div className="App">
+                <Card>
+                    <Card.Body>
+                        <h2 className="text-center mb-4">Welcome to Esol App!</h2>
+                        <Link onClick={this.props.handleLogout}>Log Out</Link>
+                    </Card.Body>
+                </Card>
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
                     <h1 className="App-title">Welcome to React</h1>
@@ -106,10 +155,6 @@ class Homepage extends Component {
                 <div>
                     <button onClick={this.PrevHandler}>Prev</button>&nbsp;
                     <button onClick={this.NextHandler}>Next</button>
-                </div>
-
-                <div className="w-100 text-center mt-2">
-                    Back to profile? <Link to="/dashboard">Back</Link>
                 </div>
             </div>
         );
