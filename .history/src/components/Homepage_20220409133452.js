@@ -85,6 +85,7 @@ class Homepage extends Component {
         return (
             <div className="App">
                 <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
                     <h1 className="App-title">Welcome to Esol App!</h1>
                 </header>
                 <p className="App-intro">
@@ -110,7 +111,7 @@ class Homepage extends Component {
                     <button onClick={this.NextHandler}>Next</button>
                 </div>
 
-                <div className="w-100 text-center mt-2">
+                <div className="w-1500 text-center mt-2">
                     Back to profile? <Link to="/dashboard">Back</Link>
                 </div>
             </div>

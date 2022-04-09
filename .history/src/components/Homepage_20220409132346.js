@@ -85,6 +85,7 @@ class Homepage extends Component {
         return (
             <div className="App">
                 <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
                     <h1 className="App-title">Welcome to Esol App!</h1>
                 </header>
                 <p className="App-intro">
@@ -94,10 +95,7 @@ class Homepage extends Component {
                     {this.state.pictures[this.state.indexValue]}
                 </p>
                 <p>
-                    <label htmlFor='header-search'>
-                        <span className='visually-hidden'>Search images</span>
-                    </label>
-                    <input text="text" id="header-search" placeholder="Seach images" name="s"
+                    <input className="textInput"
                         onChange={this.HandleChange}
                         onKeyUp={() => this.Delay(function () {
                             this.ReloadImages();
