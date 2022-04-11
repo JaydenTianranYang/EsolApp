@@ -8,15 +8,15 @@ export default function Dashboard() {
     const { currentUser, logout } = useAuth()
     const history = useHistory()
 
-    function handleLogout() {
-        // setError("")
+    async function handleLogout() {
+        setError("")
 
-        // try {
-        //     await logout()
+        try {
+            await logout()
             history.push('/')
-        // } catch {
-        //     setError("Failed to log out")
-        // }
+        } catch {
+            setError("Failed to log out")
+        }
     }
 
     function handleStart() {

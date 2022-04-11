@@ -9,14 +9,7 @@ export default function Dashboard() {
     const history = useHistory()
 
     function handleLogout() {
-        // setError("")
-
-        // try {
-        //     await logout()
-            history.push('/')
-        // } catch {
-        //     setError("Failed to log out")
-        // }
+        history.push('/')
     }
 
     function handleStart() {
